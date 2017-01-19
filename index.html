@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>tracking.js - first tracking</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="./build/tracking-min.js"></script>
   <script src="./build/data/mouth.js"></script>
 </head>
 <body>
-  <video id="myVideo" autoplay="true" width="400" height="300" preload autoplay loop muted></video>
+  <img id='pizza' src ='pizza.png' height='50'>
+  <video id="myVideo" autoplay="true" width="100%" height='100%' preload autoplay loop muted></video>
   <script>
 
   var video = document.querySelector("#myVideo");
@@ -38,6 +41,9 @@
   });
 
   tracking.track('#myVideo', mouth);
+
+$('#pizza')
+
   </script>
 
 
