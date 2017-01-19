@@ -10,7 +10,7 @@
 </head>
 <body>
   <img id='pizza' src ='pizza.png' height='50'>
-  <video id="myVideo" autoplay="true" width="300pxlls" height='400px' preload autoplay loop muted></video>
+  <video id="myVideo" autoplay="true" width="300px" height='400px' preload autoplay loop muted></video>
   <script>
 
   var video = document.querySelector("#myVideo");
@@ -26,23 +26,37 @@
   }
 
   function videoError(e) {
-     // do something
+     console.log(e)
   }
-  const mouth = new tracking.ObjectTracker(['mouth']);
 
-  mouth.on('track', function(event) {
-    if (event.data.length === 0) {
-      // No colors were detected in this frame.
-    } else {
-      event.data.forEach(function(rect) {
-        console.log('MOUTH SPOTTED AT:', rect.x, rect.y, rect.height, rect.width);
-      });
-    }
-  });
+  window.onload = function() {
+        const tracker = new tracking.ObjectTracker(['mouth']);
+        tracker.setInitialScale(0.8);
+        tracker.setStepSize(1.5);
+        tracker.setEdgesDensity(0.1);
+        tracking.track('#myVideo', tracker, { camera: true });
+        tracker.on('track', function(event) {
+          event.data.forEach(function(rect) {
+            console.log('IN YA MOUTH', rect.x, rect.y, rect.width, rect.height)
+          });
+        });
+      };
 
-  tracking.track('#myVideo', mouth);
+//   const mouth = new tracking.ObjectTracker(['mouth']);
 
-$('#pizza')
+//   mouth.on('track', function(event) {
+//     if (event.data.length === 0) {
+//       // No colors were detected in this frame.
+//     } else {
+//       event.data.forEach(function(rect) {
+//         console.log('MOUTH SPOTTED AT:', rect.x, rect.y, rect.height, rect.width);
+//       });
+//     }
+//   });
+
+//   tracking.track('#myVideo', mouth);
+
+// $('#pizza')
 
   </script>
 
