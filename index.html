@@ -10,9 +10,9 @@
 </head>
 <body>
   <div id="site">
-  <video id="myVideo" autoplay="true" width="300px" height='400px' preload autoplay loop muted></video>
+    <video id="myVideo" autoplay="true" width="300px" height='400px' preload autoplay loop muted></video>
     <div id="snowZone"></div>
-</div>
+  </div>
   <script>
 
   var video = document.querySelector("#myVideo");
@@ -33,10 +33,10 @@
 
   window.onload = function() {
         const tracker = new tracking.ObjectTracker(['mouth']);
-        tracker.setInitialScale(0.8);
-        tracker.setStepSize(1.5);
+        tracker.setInitialScale(2);
+        tracker.setStepSize(.5);
         tracker.setEdgesDensity(0.1);
-        tracking.track('#myVideo', tracker, { camera: true });
+        tracking.track('#myVideo', tracker);
         tracker.on('track', function(event) {
           event.data.forEach(function(rect) {
             console.log('IN YA MOUTH', rect.x, rect.y, rect.width, rect.height)
@@ -46,7 +46,7 @@
 
  function fallingSnow() {
 
-        var $snowflakes = $(), qt = 20;
+        var $snowflakes = $(), qt = 1;
 
         for (var i = 0; i < qt; ++i) {
             var $snowflake = $('<img class="snowflakes" src ="pizza.png">');
@@ -61,16 +61,17 @@
 
         $snowflakes.animate({
             top: "1000px"
-        }, Math.random() + 10000, function(){
+        }, Math.random() + 5000, function(){
             $(this).remove();
-            // run again when all 20 snowflakes hit the floor
-            if (--qt < 1) {
-                fallingSnow();
-            }
+            // // run again when all 20 snowflakes hit the floor
+            // if (--qt < 1) {
+            //     fallingSnow();
+            // }
         });
     }
 
-    fallingSnow();
+    setInterval(fallingSnow, 3000)
+    // fallingSnow();
 
 //   const mouth = new tracking.ObjectTracker(['mouth']);
 
@@ -89,7 +90,6 @@
 // $('#pizza')
 
   </script>
-
 
 </body>
 </html>
