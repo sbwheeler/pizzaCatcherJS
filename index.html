@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>tracking.js - first tracking</title>
+  <script src="./build/tracking-min.js"></script>
+  <script src="./build/data/mouth.js"></script>
+</head>
+<body>
+  <video id="myVideo" autoplay="true" width="400" height="300" preload autoplay loop muted></video>
+  <script>
+
+  var video = document.querySelector("#myVideo");
+
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+  if (navigator.getUserMedia) {
+     navigator.getUserMedia({video: true}, handleVideo, videoError);
+  }
+
+  function handleVideo(stream) {
+     video.src = window.URL.createObjectURL(stream);
+  }
+
+  function videoError(e) {
+     // do something
+  }
+  const mouth = new tracking.ObjectTracker(['mouth']);
+
+  mouth.on('track', function(event) {
+    if (event.data.length === 0) {
+      // No colors were detected in this frame.
+    } else {
+      event.data.forEach(function(rect) {
+        console.log('MOUTH SPOTTED AT:', rect.x, rect.y, rect.height, rect.width);
+      });
+    }
+  });
+
+  tracking.track('#myVideo', mouth);
+  </script>
+
+
+</body>
+</html>
