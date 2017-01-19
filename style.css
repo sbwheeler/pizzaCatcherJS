@@ -4,3 +4,20 @@
     -webkit-transform:rotateY(180deg); /* Safari and Chrome */
     -moz-transform:rotateY(180deg); /* Firefox */
 }
+.snowflakes {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:200;
+    width:50px;
+}
+body {
+  background-color:grey;
+}
+#site {
+    width:100%;
+    height:100%;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+}

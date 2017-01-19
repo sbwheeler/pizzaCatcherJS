@@ -9,8 +9,10 @@
   <script src="./build/data/mouth.js"></script>
 </head>
 <body>
-  <img id='pizza' src ='pizza.png' height='50'>
+  <div id="site">
   <video id="myVideo" autoplay="true" width="300px" height='400px' preload autoplay loop muted></video>
+    <div id="snowZone"></div>
+</div>
   <script>
 
   var video = document.querySelector("#myVideo");
@@ -41,6 +43,34 @@
           });
         });
       };
+
+ function fallingSnow() {
+
+        var $snowflakes = $(), qt = 20;
+
+        for (var i = 0; i < qt; ++i) {
+            var $snowflake = $('<img class="snowflakes" src ="pizza.png">');
+            $snowflake.css({
+                'left': (Math.random() * $('#site').width()) + 'px',
+                'top': (- Math.random() * $('#site').height()) + 'px'
+            });
+            // add this snowflake to the set of snowflakes
+            $snowflakes = $snowflakes.add($snowflake);
+        }
+        $('#snowZone').prepend($snowflakes);
+
+        $snowflakes.animate({
+            top: "1000px"
+        }, Math.random() + 10000, function(){
+            $(this).remove();
+            // run again when all 20 snowflakes hit the floor
+            if (--qt < 1) {
+                fallingSnow();
+            }
+        });
+    }
+
+    fallingSnow();
 
 //   const mouth = new tracking.ObjectTracker(['mouth']);
 
