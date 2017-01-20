@@ -34,18 +34,26 @@
           console.log(e)
       }
 
-      window.onload = function() {
-          const tracker = new tracking.ColorTracker(['cyan']);
-          // tracker.setInitialScale(2);
-          // tracker.setStepSize(.5);
-          // tracker.setEdgesDensity(0.1);
-          tracking.track('#webcam', tracker);
-          tracker.on('track', function(event) {
-              event.data.forEach(function(rect) {
-                  console.log('CYAAAAN', 'X: ', rect.x, 'Y: ', rect.y)
-              });
-          });
-      };
+
+      tracking.ColorTracker.registerColor('pink', function(r, g, b) {
+        if ((r > 180) && (g < 90 && g > 40) && (b < 160 && b > 80)) return true;
+        return false;
+      })
+        const tracker = new tracking.ColorTracker(['pink']);
+        // tracker.setInitialScale(2);
+        // tracker.setStepSize(.5);
+        // tracker.setEdgesDensity(0.1);
+        let x;
+        let y;
+        tracking.track('#webcam', tracker);
+        tracker.on('track', function(event) {
+            event.data.forEach(function(rect) {
+              x = rect.x;
+              y = rect.y;
+                // console.log('PINK', 'X: ', rect.x, 'Y: ', rect.y)
+            });
+        });
+
 
       function fallingSnow() {
 
@@ -69,8 +77,13 @@
           }, {
               duration: 4000,
               step: function(now, fx) {
-                console.log($('.snowflakes').offset().left)
-                console.log($('.snowflakes').offset().top)
+                let snowX = $('.snowflakes').offset().left
+                let snowY = $('.snowflakes').offset().top
+                // console.log(snowX)
+                // console.log(snowY)
+                if ((snowX < x + 50 && snowX > x -50)) {
+                  console.log('HIT', x, snowX)
+                }
                 // $(this).remove();
 
               }
