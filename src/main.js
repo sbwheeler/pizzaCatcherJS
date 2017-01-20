@@ -21,17 +21,20 @@
         return false;
       })
         const tracker = new tracking.ColorTracker(['pink']);
-        // tracker.setInitialScale(2);
-        // tracker.setStepSize(.5);
-        // tracker.setEdgesDensity(0.1);
+
         let trackerX;
         let trackerY;
+
+        //for determining offset with different screen size
+        let xOffset = document.getElementById('fullcontainer').offsetWidth;
+
+        console.log('OFFSET: ', xOffset)
+
         tracking.track('#webcam', tracker);
         tracker.on('track', function(event) {
             event.data.forEach(function(rect) {
-              trackerX = (900 - rect.x)
+              trackerX = (900 - rect.x)  + ((xOffset - 900) / 2)
               trackerY = rect.y + 200;
-                // console.log('PINK', 'X: ', rect.x, 'Y: ', rect.y)
             });
         });
 
@@ -60,9 +63,9 @@
               step: function(now, fx) {
                 let pizzaX = $('.pizzaSlices').offset().left
                 let pizzaY = $('.pizzaSlices').offset().top
-                // console.log(pizzaX)
-                // console.log(pizzaY, trackerY)
-                if ((pizzaX < trackerX + 50 && pizzaX > trackerX - 50) && (pizzaY < trackerY + 50 && pizzaY > trackerY - 50)) {
+                console.log('pizza X: ', pizzaX, 'tracker X: ', trackerX)
+                console.log('pizza Y: ', pizzaY, 'tracker Y: ', trackerY)
+                if ((pizzaX < trackerX + 100 && pizzaX > trackerX - 100) && (pizzaY < trackerY + 100 && pizzaY > trackerY - 100)) {
                   $(this).remove()
                 }
               },
@@ -74,3 +77,4 @@
       }
 
       var intervalToken = setInterval(fallingSnow, 3000)
+
