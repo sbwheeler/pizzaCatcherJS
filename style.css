@@ -1,4 +1,4 @@
-#myVideo
+#webcam
 {
     transform: rotateY(180deg);
     -webkit-transform:rotateY(180deg); /* Safari and Chrome */
@@ -15,8 +15,6 @@ body {
   background-color:grey;
 }
 #site {
-    height:100vh;
-    margin:0 auto;
-    position:relative;
-    overflow:hidden;
+    width: 900px;
+    margin: 0 auto;
 }

@@ -1,110 +1,84 @@
 <!doctype html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <title>tracking.js - first tracking</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!--   <script src="./build/tracking-min.js"></script>
-  <script src="./build/data/mouth.js"></script> -->
-  <script src="./node_modules/clmtrackr/clmtrackr.js"></script>
-  <script src="./node_modules/clmtrackr/models/model_pca_20_svm.js"></script>
+    <meta charset="utf-8">
+    <title>tracking.js - first tracking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./build/tracking-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
+
 <body>
-  <div id="site">
-    <video id="myVideo" autoplay="true" width="1250" height="850" preload autoplay loop muted></video>
+  <div id='site'>
+    <video id="webcam" autoplay="true" width="100%" autoplay></video>
+    <!-- top right corner of screen is 0,0, bottom left is width,height -->
     <div id="snowZone"></div>
   </div>
-  <script>
-  var video = document.querySelector("#myVideo");
 
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
-  if (navigator.getUserMedia) {
-     navigator.getUserMedia({video: true}, handleVideo, videoError);
-  }
-  function handleVideo(stream) {
-     video.src = window.URL.createObjectURL(stream);
-  }
-  function videoError(e) {
-     console.log(e)
-  }
+    <script>
+      var video = document.querySelector("#webcam");
 
-  // window.onload = function() {
-  //       const tracker = new tracking.ObjectTracker(['mouth']);
-  //       tracker.setInitialScale(2);
-  //       tracker.setStepSize(.5);
-  //       tracker.setEdgesDensity(0.1);
-  //       tracking.track('#myVideo', tracker);
-  //       tracker.on('track', function(event) {
-  //         event.data.forEach(function(rect) {
-  //           console.log('IN YA MOUTH', rect.x, rect.y, rect.width, rect.height)
-  //         });
-  //       });
-  //     };
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+      if (navigator.getUserMedia) {
+          navigator.getUserMedia({
+              video: true
+          }, handleVideo, videoError);
+      }
 
-  var videoInput = document.getElementById('myVideo');
+      function handleVideo(stream) {
+          video.src = window.URL.createObjectURL(stream);
+      }
 
-  var ctracker = new clm.tracker({useWebGL : true});
-  ctracker.init(pModel);
-  ctracker.start(videoInput);
+      function videoError(e) {
+          console.log(e)
+      }
 
+      window.onload = function() {
+          const tracker = new tracking.ColorTracker(['cyan']);
+          // tracker.setInitialScale(2);
+          // tracker.setStepSize(.5);
+          // tracker.setEdgesDensity(0.1);
+          tracking.track('#webcam', tracker);
+          tracker.on('track', function(event) {
+              event.data.forEach(function(rect) {
+                  console.log('CYAAAAN', 'X: ', rect.x, 'Y: ', rect.y)
+              });
+          });
+      };
 
-  function positionLoop() {
-     requestAnimationFrame(positionLoop);
-     var positions = ctracker.getCurrentPosition();
-     console.log('position', positions[57], positions[60])
-     // positions = [[x_0, y_0], [x_1,y_1], ... ]
-     // do something with the positions ...
-   }
+      function fallingSnow() {
 
-positionLoop()
+          var $snowflakes = $(),
+              qt = 1;
 
- function fallingSnow() {
+          for (var i = 0; i < qt; ++i) {
+              var $snowflake = $('<img class="snowflakes" src ="pizza.png">');
+              $snowflake.css({
+                  'left': ($('#webcam').offset().left + Math.random() * $('#webcam').width()) + 'px',
+                  'top': '0px'
+              });
+              // add this snowflake to the set of snowflakes
+              $snowflakes = $snowflakes.add($snowflake);
+          }
+          $('#snowZone').prepend($snowflakes);
+          // console.log($('.snowflakes').offset().left)
+          // console.log($('.snowflakes').offset().top)
+          $snowflakes.animate({
+              top: "1000px"
+          }, {
+              duration: 4000,
+              step: function(now, fx) {
+                console.log($('.snowflakes').offset().left)
+                console.log($('.snowflakes').offset().top)
+                // $(this).remove();
 
-        var $snowflakes = $(), qt = 1;
+              }
+          });
+      }
 
-        for (var i = 0; i < qt; ++i) {
-            var $snowflake = $('<img class="snowflakes" src ="pizza.png">');
-            $snowflake.css({
-                'left': (Math.random() * $('#site').width()) + 'px',
-                'top': (- Math.random() * $('#site').height()) + 'px'
-            });
-            // add this snowflake to the set of snowflakes
-            $snowflakes = $snowflakes.add($snowflake);
-        }
-        $('#snowZone').prepend($snowflakes);
-
-        $snowflakes.animate({
-            top: "1000px"
-        }, Math.random() + 5000, function(){
-            $(this).remove();
-            // // run again when all 20 snowflakes hit the floor
-            // if (--qt < 1) {
-            //     fallingSnow();
-            // }
-        });
-    }
-
-    var intervalToken = setInterval(fallingSnow, 3000)
-    // fallingSnow();
-
-//   const mouth = new tracking.ObjectTracker(['mouth']);
-
-//   mouth.on('track', function(event) {
-//     if (event.data.length === 0) {
-//       // No colors were detected in this frame.
-//     } else {
-//       event.data.forEach(function(rect) {
-//         console.log('MOUTH SPOTTED AT:', rect.x, rect.y, rect.height, rect.width);
-//       });
-//     }
-//   });
-
-//   tracking.track('#myVideo', mouth);
-
-// $('#pizza')
-
-  </script>
-
+      var intervalToken = setInterval(fallingSnow, 3000)
+    </script>
 </body>
+
 </html>
