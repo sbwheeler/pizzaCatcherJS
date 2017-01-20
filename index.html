@@ -13,7 +13,7 @@
   <div id='site'>
     <video id="webcam" autoplay="true" width="100%" autoplay></video>
     <!-- top right corner of screen is 0,0, bottom left is width,height -->
-    <div id="snowZone"></div>
+    <div id="pizzaZone"></div>
   </div>
 
     <script>
@@ -36,7 +36,7 @@
 
 
       tracking.ColorTracker.registerColor('pink', function(r, g, b) {
-        if ((r > 180) && (g < 90 && g > 40) && (b < 160 && b > 80)) return true;
+        if ((r > 210) && (g < 200 && g > 50) && (b < 200 && b > 70)) return true;
         return false;
       })
         const tracker = new tracking.ColorTracker(['pink']);
@@ -57,28 +57,28 @@
 
       function fallingSnow() {
 
-          var $snowflakes = $(),
+          var $pizzaSlices = $(),
               qt = 1;
 
           for (var i = 0; i < qt; ++i) {
-              var $snowflake = $('<img class="snowflakes" src ="pizza.png">');
-              $snowflake.css({
+              var $pizzaSlice = $('<img class="pizzaSlices" src ="pizza.png">');
+              $pizzaSlice.css({
                   'left': ($('#webcam').offset().left + Math.random() * $('#webcam').width()) + 'px',
                   'top': '0px'
               });
               // add this snowflake to the set of snowflakes
-              $snowflakes = $snowflakes.add($snowflake);
+              $pizzaSlices = $pizzaSlices.add($pizzaSlice);
           }
-          $('#snowZone').prepend($snowflakes);
+          $('#pizzaZone').prepend($pizzaSlices);
           // console.log($('.snowflakes').offset().left)
           // console.log($('.snowflakes').offset().top)
-          $snowflakes.animate({
+          $pizzaSlices.animate({
               top: "1000px"
           }, {
               duration: 4000,
               step: function(now, fx) {
-                let pizzaX = $('.snowflakes').offset().left
-                let pizzaY = $('.snowflakes').offset().top
+                let pizzaX = $('.pizzaSlices').offset().left
+                let pizzaY = $('.pizzaSlices').offset().top
                 // console.log(pizzaX)
                 // console.log(pizzaY, trackerY)
                 if ((pizzaX < trackerX + 80 && pizzaX > trackerX -80) && (pizzaY < trackerY + 80 && pizzaY > trackerY -80)) {
