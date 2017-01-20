@@ -30,7 +30,7 @@
         tracker.on('track', function(event) {
             event.data.forEach(function(rect) {
               trackerX = (900 - rect.x)
-              trackerY = rect.y;
+              trackerY = rect.y + 200;
                 // console.log('PINK', 'X: ', rect.x, 'Y: ', rect.y)
             });
         });
@@ -44,8 +44,8 @@
           for (var i = 0; i < qt; ++i) {
               var $pizzaSlice = $('<img class="pizzaSlices" src ="pizza.png">');
               $pizzaSlice.css({
-                  'left': ($('#webcam').offset().left + Math.random() * $('#webcam').width()) + 'px',
-                  'top': '0px'
+                  'left': (($('#webcam').offset().left + 25) + Math.random() * $('#webcam').width() - 50) + 'px',
+                  'top': '200px'
               });
               // add this snowflake to the set of snowflakes
               $pizzaSlices = $pizzaSlices.add($pizzaSlice);
