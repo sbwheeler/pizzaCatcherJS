@@ -63,10 +63,12 @@
               step: function(now, fx) {
                 let pizzaX = $('.pizzaSlices').offset().left
                 let pizzaY = $('.pizzaSlices').offset().top
-                console.log('pizza X: ', pizzaX, 'tracker X: ', trackerX)
-                console.log('pizza Y: ', pizzaY, 'tracker Y: ', trackerY)
-                if ((pizzaX < trackerX + 100 && pizzaX > trackerX - 100) && (pizzaY < trackerY + 100 && pizzaY > trackerY - 100)) {
-                  $(this).remove()
+                // console.log('pizza X: ', pizzaX, 'tracker X: ', trackerX)
+                // console.log('pizza Y: ', pizzaY, 'tracker Y: ', trackerY)
+                if ((pizzaX < trackerX + 75 && pizzaX > trackerX - 75) && (pizzaY < trackerY + 75 && pizzaY > trackerY - 75)) {
+                  let left = $(this).offset().left
+                  let top = $(this).offset().top
+                  $(this).replaceWith( (`<img class="pizzaSlices" src="../logo.png" style='left:${left}px; top:${top}px;'>` ));
                 }
               },
               complete: function() {
