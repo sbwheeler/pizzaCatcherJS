@@ -12,7 +12,7 @@
 </head>
 <body>
   <div id="site">
-    <video id="myVideo" autoplay="true" width="1000" height="850" preload autoplay loop muted></video>
+    <video id="myVideo" autoplay="true" width="1250" height="850" preload autoplay loop muted></video>
     <div id="snowZone"></div>
   </div>
   <script>
@@ -52,7 +52,7 @@
   function positionLoop() {
      requestAnimationFrame(positionLoop);
      var positions = ctracker.getCurrentPosition();
-     console.log('position', positions)
+     console.log('position', positions[57], positions[60])
      // positions = [[x_0, y_0], [x_1,y_1], ... ]
      // do something with the positions ...
    }
@@ -85,7 +85,7 @@ positionLoop()
         });
     }
 
-    setInterval(fallingSnow, 3000)
+    var intervalToken = setInterval(fallingSnow, 3000)
     // fallingSnow();
 
 //   const mouth = new tracking.ObjectTracker(['mouth']);
