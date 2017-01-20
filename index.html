@@ -43,13 +43,13 @@
         // tracker.setInitialScale(2);
         // tracker.setStepSize(.5);
         // tracker.setEdgesDensity(0.1);
-        let x;
-        let y;
+        let trackerX;
+        let trackerY;
         tracking.track('#webcam', tracker);
         tracker.on('track', function(event) {
             event.data.forEach(function(rect) {
-              x = rect.x;
-              y = rect.y;
+              trackerX = (900 - rect.x)
+              trackerY = rect.y;
                 // console.log('PINK', 'X: ', rect.x, 'Y: ', rect.y)
             });
         });
@@ -77,17 +77,19 @@
           }, {
               duration: 4000,
               step: function(now, fx) {
-                let snowX = $('.snowflakes').offset().left
-                let snowY = $('.snowflakes').offset().top
-                // console.log(snowX)
-                // console.log(snowY)
-                if ((snowX < x + 50 && snowX > x -50)) {
-                  console.log('HIT', x, snowX)
+                let pizzaX = $('.snowflakes').offset().left
+                let pizzaY = $('.snowflakes').offset().top
+                // console.log(pizzaX)
+                // console.log(pizzaY, trackerY)
+                if ((pizzaX < trackerX + 80 && pizzaX > trackerX -80) && (pizzaY < trackerY + 80 && pizzaY > trackerY -80)) {
+                  $(this).remove()
                 }
-                // $(this).remove();
-
+              },
+              complete: function() {
+                $(this).remove()
               }
           });
+          // $('.snowflakes').remove()
       }
 
       var intervalToken = setInterval(fallingSnow, 3000)
