@@ -12,7 +12,7 @@
     width:50px;
 }
 body {
-  background-image:url('many_pizza_slices.jpeg');
+  background-image:url('./images/many_pizza_slices.jpeg');
 }
 #site {
     width: 900px;

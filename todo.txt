@@ -1,0 +1,7 @@
+-set multiple pizza graphics
+-improve pizza falling animations
+-set multiple pizza-eaten graphics
+-track score
+-hook up to a database to hold the high scores
+-start screen?
+-win/loss condition

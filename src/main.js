@@ -28,8 +28,6 @@
         //for determining offset with different screen size
         let xOffset = document.getElementById('fullcontainer').offsetWidth;
 
-        console.log('OFFSET: ', xOffset)
-
         tracking.track('#webcam', tracker);
         tracker.on('track', function(event) {
             event.data.forEach(function(rect) {
@@ -39,25 +37,23 @@
         });
 
 
-      function fallingSnow() {
-
-          var $pizzaSlices = $(),
+      function fallingPizza() {
+          let $pizzaSlices = $(),
               qt = 1;
 
           for (var i = 0; i < qt; ++i) {
-              var $pizzaSlice = $('<img class="pizzaSlices" src ="pizza.png">');
+              let $pizzaSlice = $('<img class="pizzaSlices" src ="../images/pizza.png">');
               $pizzaSlice.css({
                   'left': (($('#webcam').offset().left + 25) + Math.random() * $('#webcam').width() - 50) + 'px',
                   'top': '200px'
               });
-              // add this snowflake to the set of snowflakes
               $pizzaSlices = $pizzaSlices.add($pizzaSlice);
           }
+
           $('#pizzaZone').prepend($pizzaSlices);
-          // console.log($('.snowflakes').offset().left)
-          // console.log($('.snowflakes').offset().top)
+
           $pizzaSlices.animate({
-              top: "1000px"
+              top: '1000px'
           }, {
               duration: 4000,
               step: function(now, fx) {
@@ -66,17 +62,25 @@
                 // console.log('pizza X: ', pizzaX, 'tracker X: ', trackerX)
                 // console.log('pizza Y: ', pizzaY, 'tracker Y: ', trackerY)
                 if ((pizzaX < trackerX + 75 && pizzaX > trackerX - 75) && (pizzaY < trackerY + 75 && pizzaY > trackerY - 75)) {
-                  let left = $(this).offset().left
-                  let top = $(this).offset().top
-                  $(this).replaceWith( (`<img class="pizzaSlices" src="../logo.png" style='left:${left}px; top:${top}px;'>` ));
+                  let left;
+                  let top;
+                  if (this) {
+                    left = $(this).offset().left;
+                    top = $(this).offset().top;
+                  }
+                  const images = ['../images/logo.png', '../images/mingface.png', '../images/explosion.png']
+                  console.log(images[Math.floor(Math.random()*images.length)])
+                  $(this).replaceWith( (`<img class="pizzaSlices" id="nomNom" src='${images[Math.floor(Math.random()*images.length)]}' style='left:${left}px; top:${top}px;'>` ))
+                  setTimeout(function() {
+                    $('#nomNom').remove()
+                  }, 1000)
                 }
               },
               complete: function() {
                 $(this).remove()
               }
           });
-          // $('.snowflakes').remove()
       }
 
-      var intervalToken = setInterval(fallingSnow, 3000)
+      const intervalToken = setInterval(fallingPizza, 3000)
 
