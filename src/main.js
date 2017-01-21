@@ -69,7 +69,6 @@
                     top = $(this).offset().top;
                   }
                   const images = ['../images/mingface.png', '../images/explosion.png', '../images/Om_nom_nom.png', '../images/cookie_monster.png', '../images/good_job.png', '../images/thumbs_up.png']
-                  console.log(images[Math.floor(Math.random()*images.length)])
                   $(this).replaceWith( (`<img class="pizzaSlices" id="nomNom" src='${images[Math.floor(Math.random()*images.length)]}' style='left:${left}px; top:${top}px;'>` ))
                   setTimeout(function() {
                     $('#nomNom').remove()
@@ -82,5 +81,29 @@
           });
       }
 
-      const intervalToken = setInterval(fallingPizza, 3000)
+    var time = 75;
+
+    $('#site').addClass("hiddenClass");
+
+    function onTimer() {
+    $('#site').removeClass("hiddenClass");
+    $('#site').addClass("showClass");
+    document.getElementById('mycounter').innerHTML = time + ' Seconds Left!';
+    $('#start').hide()
+    time--;
+    if (time < 0) {
+        $('#site').removeClass("showClass");
+        $('#site').addClass("hiddenClass");
+        $('#start').show()
+        $('#mycounter').hide()
+        alert('Game Over!');
+        time = 75
+
+    } else {
+        setTimeout(onTimer, 1000);
+    }
+}
+
+
+const intervalToken = setInterval(fallingPizza, 3000)
 
