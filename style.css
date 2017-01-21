@@ -1,9 +1,7 @@
-#webcam
-{
-    transform: rotateY(180deg);
-    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-    -moz-transform:rotateY(180deg); /* Firefox */
+body {
+  background-image:url('./images/many_pizza_slices.jpeg');
 }
+
 .pizzaSlices {
     top:0px;
     left:0px;
@@ -11,10 +9,25 @@
     z-index:200;
     width:50px;
 }
-body {
-  background-image:url('./images/many_pizza_slices.jpeg');
+
+#webcam {
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
 }
+
 #site {
     width: 900px;
     margin: 0 auto;
+}
+
+#ming{
+    float: left;
+    margin-left: 30%;
+}
+
+#score {
+    float: right;
+    margin-top: 20%;
+    font-size: 200%;
 }
