@@ -68,7 +68,7 @@
                     left = $(this).offset().left;
                     top = $(this).offset().top;
                   }
-                  const images = ['../images/logo.png', '../images/mingface.png', '../images/explosion.png']
+                  const images = ['../images/mingface.png', '../images/explosion.png', '../images/Om_nom_nom.png', '../images/cookie_monster.png', '../images/good_job.png', '../images/thumbs_up.png']
                   console.log(images[Math.floor(Math.random()*images.length)])
                   $(this).replaceWith( (`<img class="pizzaSlices" id="nomNom" src='${images[Math.floor(Math.random()*images.length)]}' style='left:${left}px; top:${top}px;'>` ))
                   setTimeout(function() {
