@@ -39,7 +39,7 @@ function onTimer() {
 
 function endCheck(level) {
 if (level > 5) {
-    $("#startbuttondiv").after(`<div id='endgame'> Game Over! Your Score is ${score}! </div>`)
+    $("#startbuttondiv").after(`<br/><div id='endgame'> Game Over! Your Score is ${score}! </div>`)
     $('#site').removeClass("showClass");
     $('#site').addClass("hiddenClass");
     document.getElementById('start').innerHTML = 'Start New Game';
@@ -47,7 +47,7 @@ if (level > 5) {
     $('#mycounter').hide()
     $('#score').hide()
     score = 0
-    time = 10
+    time = 45
     clearInterval(intervalId)
   }
 }
