@@ -1,14 +1,14 @@
-let time = 10;
+let time = 45;
 
 $('#site').addClass("hiddenClass");
 
 let intervalId;
-let level = 5;
+let level = 1;
 function onTimer() {
 
   if($('#endgame')) $('#endgame').remove()
 
-  if (time === 10) {
+  if (time === 45) {
     if (level > 5) level = 1;
     intervalId = setInterval(() => fallingPizza(level), ((3500 - (150*level))))
     level += 1
@@ -17,7 +17,7 @@ function onTimer() {
   $('#site').addClass("showClass");
   $('#mycounter').show()
   $('#start').hide()
-  document.getElementById('mycounter').innerHTML = time + ' Seconds Left';
+  document.getElementById('mycounter').innerHTML = time;
   time--;
 
   if (time < 0) {
@@ -27,7 +27,7 @@ function onTimer() {
     $('#start').show()
     $('#mycounter').hide()
     $('#score').hide()
-    time = 10
+    time = 45
     clearInterval(intervalId)
     endCheck(level)
   }
@@ -47,7 +47,7 @@ if (level > 5) {
     $('#mycounter').hide()
     $('#score').hide()
     score = 0
-    time = 10
+    time = 45
     clearInterval(intervalId)
   }
 }
