@@ -1,5 +1,6 @@
 body {
   background-image:url('./images/many_pizza_slices.jpeg');
+  font-family: "Arial", Helvetica, sans-serif;
 }
 
 .pizzaSlices {

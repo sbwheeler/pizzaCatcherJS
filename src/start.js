@@ -1,12 +1,12 @@
-let time = 45;
+let time = 10;
 
 $('#site').addClass("hiddenClass");
 
 let intervalId;
-let level = 0;
+let level = 1;
 function onTimer() {
-  if (time === 45) {
-    intervalId = setInterval(() => fallingPizza(level), ((Math.random() * (3000 - (2000 - (100 * level))) + (2000 - (100 * level)))))
+  if (time === 10) {
+    intervalId = setInterval(() => fallingPizza(level), ((3500 - (200*level))))
     level += 1
   }
   $('#site').removeClass("hiddenClass");
@@ -19,16 +19,34 @@ function onTimer() {
   if (time < 0) {
     $('#site').removeClass("showClass");
     $('#site').addClass("hiddenClass");
+    document.getElementById('start').innerHTML = 'Start Game: Level ' + level;
     $('#start').show()
     $('#mycounter').hide()
     $('#score').hide()
-    time = 45
+    time = 10
     clearInterval(intervalId)
 
-  } else {
+  }
+
+   else {
     setTimeout(onTimer, 1000);
   }
 }
+
+if (level > 2) {
+    console.log('HIBCDIBCDUIBCIUDBCIDBICUBDIUBCDUIBciu')
+    alert('Game Over! Your Score is = ' + score + '!');
+    $('#site').removeClass("showClass");
+    $('#site').addClass("hiddenClass");
+    document.getElementById('start').innerHTML = 'Start New Game';
+    $('#start').show()
+    $('#mycounter').hide()
+    $('#score').hide()
+    score = 0
+    time = 10
+    clearInterval(intervalId)
+
+  }
 
 function addScore() {
   $('#score').show();
