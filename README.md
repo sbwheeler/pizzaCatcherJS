@@ -30,6 +30,10 @@ then connect to localhost:8080.
 
 You will need a pink sticker like the one located below. This is what you will be catching the pizza with!
 
+![alt text][logo]
+
+[logo]: ../images/examplePink.jpeg
+
 ## Running the tests
 
 Our test suite features testing for the routing and frontend. On the frontend, we test our jQuery for expected behavior, and also test specific actions of out libraries and modules. All tests are run via
