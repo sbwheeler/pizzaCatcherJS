@@ -3,35 +3,38 @@
 
 <head>
     <meta charset="utf-8">
-    <title>tracking.js - first tracking</title>
+    <title>MingJS - Catch the pizza!</title>
     <link rel="stylesheet" href="style.css">
     <script src="./build/tracking-min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 
 <body>
-  <div id='fullcontainer'>
+    <div id='fullcontainer'>
 
-    <div>
-      <img id='ming' src='./images/ming.png' height='200'>
-      <strong id="mycounter"></strong>
-      <strong id='score'>Score: 0</strong>
+        <div>
+            <img id='ming' src='./images/ming.png' height='200'>
+        </div>
+
+        <div id='startbuttondiv'>
+            <button id='start' onclick="onTimer();addScore()">Start Game</button>
+        </div>
+
+        <strong id="mycounter"></strong>
+        <div id='site' class='beginning'>
+            <video id="webcam" autoplay="true" width="100%" autoplay></video>
+            <!-- top right corner of screen is 0,0, bottom left is width,height -->
+            <div id="pizzaZone"></div>
+        </div>
+        <strong id='score'></strong>
+
     </div>
 
+    <footer id='footer'>© 2016 Sam Wheeler and Anuj Shah</footer>
 
-    <div id='startbuttondiv'>
-        <button id='start' onclick="onTimer()">Start Game</button>
-     </div>
-
-
-    <div id='site' class='beginning'>
-      <video id="webcam" autoplay="true" width="100%" autoplay></video>
-      <!-- top right corner of screen is 0,0, bottom left is width,height -->
-      <div id="pizzaZone"></div>
-    </div>
-  </div>
-
-  <script src='src/main.js'></script>
+    <script src='src/video.js'></script>
+    <script src='src/main.js'></script>
+    <script src='src/start.js'></script>
 </body>
 
 </html>

@@ -30,12 +30,6 @@ body {
      visibility: visible;
 }
 
-#mycounter{
-    font-size: 3em;
-    z-index: 200;
-    position:absolute;
-    padding-bottom: 100px
-}
 
 #startbuttondiv{
     width:200px;
@@ -62,6 +56,7 @@ body {
   padding: 28px;
   border: dotted #ff0000 5px;
   text-decoration: none;
+  margin-left: 14%;
 }
 
 #start:hover {
@@ -81,7 +76,20 @@ body {
 
 #score {
     float: right;
-    margin-top: 20%;
-    font-size: 100%;
+    margin-right: 2%;
+    margin-top:-45%;
+    font-size: 150%;
+}
+
+#mycounter{
+    z-index: 2;
+    position:absolute;
+    margin-top: 24.2%;
+    margin-left: -71%;
+    font-size: 150%;
+}
+
+#footer {
+    text-align: center;
 }
 

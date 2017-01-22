@@ -1,20 +1,3 @@
-var video = document.querySelector("#webcam");
-
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
-if (navigator.getUserMedia) {
-  navigator.getUserMedia({
-    video: true
-  }, handleVideo, videoError);
-}
-
-function handleVideo(stream) {
-  video.src = window.URL.createObjectURL(stream);
-}
-
-function videoError(e) {
-  console.log(e)
-}
-
 tracking.ColorTracker.registerColor('pink', function(r, g, b) {
   if ((r > 180) && (g < 130 && g > 40) && (b < 160 && b > 80)) return true;
   return false;
@@ -37,25 +20,20 @@ tracker.on('track', function(event) {
 
 let score = 0;
 
-function fallingPizza() {
-  let $pizzaSlices = $(),
-    qt = 1;
+function fallingPizza(level) {
+  let $pizzaSlice = $('<img class="pizzaSlices" src ="../images/pizza.png">');
+  $pizzaSlice.css({
+    'left': (($('#webcam').offset().left + 25) + Math.random() * $('#webcam').width() - 50) + 'px',
+    'top': '200px'
+  });
 
-  for (var i = 0; i < qt; ++i) {
-    let $pizzaSlice = $('<img class="pizzaSlices" src ="../images/pizza.png">');
-    $pizzaSlice.css({
-      'left': (($('#webcam').offset().left + 25) + Math.random() * $('#webcam').width() - 50) + 'px',
-      'top': '200px'
-    });
-    $pizzaSlices = $pizzaSlices.add($pizzaSlice);
-  }
 
-  $('#pizzaZone').prepend($pizzaSlices);
+  $('#pizzaZone').prepend($pizzaSlice);
 
-  $pizzaSlices.animate({
+  $pizzaSlice.animate({
     top: '1000px'
   }, {
-    duration: 4000,
+    duration: ((1 /level) * (Math.random() * (6000 - 4000) + 4000)),
     step: function(now, fx) {
       let pizzaX = $('.pizzaSlices').offset().left
       let pizzaY = $('.pizzaSlices').offset().top
@@ -85,29 +63,3 @@ function fallingPizza() {
     }
   });
 }
-
-var time = 75;
-
-$('#site').addClass("hiddenClass");
-
-function onTimer() {
-  $('#site').removeClass("hiddenClass");
-  $('#site').addClass("showClass");
-  document.getElementById('mycounter').innerHTML = time + ' Seconds Left!';
-  $('#start').hide()
-  time--;
-  if (time < 0) {
-    $('#site').removeClass("showClass");
-    $('#site').addClass("hiddenClass");
-    $('#start').show()
-    $('#mycounter').hide()
-    alert('Game Over!');
-    time = 75
-
-  } else {
-    setTimeout(onTimer, 1000);
-  }
-}
-
-
-const intervalToken = setInterval(fallingPizza, 3000)
