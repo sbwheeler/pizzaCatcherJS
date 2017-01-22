@@ -10,30 +10,28 @@
 </head>
 
 <body>
-<div id='fullcontainer'>
+  <div id='fullcontainer'>
 
     <div>
-      <img id ='ming' src = './images/ming.png' width = '100%' height = '200'>
-           <div id="mycounter">
-           </div>
-    </div>
-    <div id='startbuttondiv'>
-        <button id='start' onclick="onTimer()">Start Game
-        </button>
-     </div>
-  
-    <div>
       <img id='ming' src='./images/ming.png' height='200'>
+      <strong id="mycounter"></strong>
       <strong id='score'>Score: 0</strong>
     </div>
+
+
+    <div id='startbuttondiv'>
+        <button id='start' onclick="onTimer()">Start Game</button>
+     </div>
+
 
     <div id='site' class='beginning'>
       <video id="webcam" autoplay="true" width="100%" autoplay></video>
       <!-- top right corner of screen is 0,0, bottom left is width,height -->
       <div id="pizzaZone"></div>
     </div>
-</div>
-    <script src='src/main.js'></script>
+  </div>
+
+  <script src='src/main.js'></script>
 </body>
 
 </html>

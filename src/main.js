@@ -15,7 +15,7 @@ function videoError(e) {
   console.log(e)
 }
 
-     tracking.ColorTracker.registerColor('pink', function(r, g, b) {
+tracking.ColorTracker.registerColor('pink', function(r, g, b) {
   if ((r > 180) && (g < 130 && g > 40) && (b < 160 && b > 80)) return true;
   return false;
 })
@@ -60,8 +60,8 @@ function fallingPizza() {
       let pizzaX = $('.pizzaSlices').offset().left
       let pizzaY = $('.pizzaSlices').offset().top
 
-        // console.log('pizza X: ', pizzaX, 'tracker X: ', trackerX)
-        // console.log('pizza Y: ', pizzaY, 'tracker Y: ', trackerY)
+      // console.log('pizza X: ', pizzaX, 'tracker X: ', trackerX)
+      // console.log('pizza Y: ', pizzaY, 'tracker Y: ', trackerY)
 
       if ((pizzaX < trackerX + 75 && pizzaX > trackerX - 75) && (pizzaY < trackerY + 75 && pizzaY > trackerY - 75)) {
         score++;
@@ -86,29 +86,28 @@ function fallingPizza() {
   });
 }
 
-    var time = 75;
+var time = 75;
 
+$('#site').addClass("hiddenClass");
+
+function onTimer() {
+  $('#site').removeClass("hiddenClass");
+  $('#site').addClass("showClass");
+  document.getElementById('mycounter').innerHTML = time + ' Seconds Left!';
+  $('#start').hide()
+  time--;
+  if (time < 0) {
+    $('#site').removeClass("showClass");
     $('#site').addClass("hiddenClass");
+    $('#start').show()
+    $('#mycounter').hide()
+    alert('Game Over!');
+    time = 75
 
-    function onTimer() {
-    $('#site').removeClass("hiddenClass");
-    $('#site').addClass("showClass");
-    document.getElementById('mycounter').innerHTML = time + ' Seconds Left!';
-    $('#start').hide()
-    time--;
-    if (time < 0) {
-        $('#site').removeClass("showClass");
-        $('#site').addClass("hiddenClass");
-        $('#start').show()
-        $('#mycounter').hide()
-        alert('Game Over!');
-        time = 75
-
-    } else {
-        setTimeout(onTimer, 1000);
-    }
+  } else {
+    setTimeout(onTimer, 1000);
+  }
 }
 
 
 const intervalToken = setInterval(fallingPizza, 3000)
-
