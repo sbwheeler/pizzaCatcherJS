@@ -1,7 +1,12 @@
--set multiple pizza graphics
--improve pizza falling animations
--set multiple pizza-eaten graphics//
--track score
+-improve styling
+-random speeds of pizza
+-random intervls
+-add more pizzas
+-modularize code
 -hook up to a database to hold the high scores
--start screen?
--win/loss condition
+-show high score?
+
+
+--- stretch goals
+
+animation of pizzas
