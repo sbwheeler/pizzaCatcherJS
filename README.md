@@ -1,6 +1,6 @@
-# mingJs
+# pizzaCatcherJS
 
-mingJs is a color detecting game that allows people to interact with their computers and catch pizza! It was built using Node, Express, jQuery and a motion/color detecting library called tracker.js. It was made as a project for a hacakthon at Fullstack Acadmey. The game is deployed and viewable at "".
+pizzaCatcherJS is a color detecting webcam game that allows people to interact with their computers and catch pizza thrown to them by our good friend Ming (it's an inside joke). It was built using Node, Express, jQuery and a motion/color detecting library called tracker.js. It was made as a project for a hacakthon at Fullstack Acadmey. The game is deployed and viewable at "".
 
 ## Getting Started
 
@@ -28,7 +28,7 @@ and connect to localhost:8080.
 
 You will need a pink sticker like the one located below (or a pink post-it note). This is what you will be catching the pizza with!
 
-![alt text](https://github.com/sbwheeler/mingJS/blob/master/images/examplePink.jpeg)
+![alt text](https://github.com/sbwheeler/pizzaCatcherJS/blob/master/images/examplePink.jpeg)
 
 ## Running the tests
 
@@ -40,7 +40,7 @@ npm test
 
 ## Deployment
 
-mingJs is deployed on Heroku with minimal additional configuration. The .profile file and install scripts are written to handle deployment.
+pizzaCatcherJS is deployed on Heroku with minimal additional configuration. The .profile file and install scripts are written to handle deployment.
 
 ## Authors
 
