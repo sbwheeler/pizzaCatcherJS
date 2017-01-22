@@ -1,11 +1,11 @@
-let time = 30;
+let time = 45;
 
 $('#site').addClass("hiddenClass");
 
 let intervalId;
 let level = 0;
 function onTimer() {
-  if (time === 30) {
+  if (time === 45) {
     intervalId = setInterval(() => fallingPizza(level), ((Math.random() * (3000 - (2000 - (100 * level))) + (2000 - (100 * level)))))
     level += 1
   }
@@ -22,8 +22,7 @@ function onTimer() {
     $('#start').show()
     $('#mycounter').hide()
     $('#score').hide()
-    time = 30
-    score = 0;
+    time = 45
     clearInterval(intervalId)
 
   } else {

@@ -20,8 +20,10 @@ tracker.on('track', function(event) {
 
 let score = 0;
 
+const pizzaImages = ['../images/pizza.png', '../images/pizzasmile.png', '../images/realpizza.png', '../images/olivepizza.png']
+
 function fallingPizza(level) {
-  let $pizzaSlice = $('<img class="pizzaSlices" src ="../images/pizza.png">');
+  let $pizzaSlice = $(`<img class="pizzaSlices" src ='${pizzaImages[Math.floor(Math.random()*pizzaImages.length)]}'>`);
   $pizzaSlice.css({
     'left': (($('#webcam').offset().left + 25) + Math.random() * $('#webcam').width() - 50) + 'px',
     'top': '200px'
