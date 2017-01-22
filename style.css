@@ -21,6 +21,60 @@ body {
     margin: 0 auto;
 }
 
+
+.hiddenClass{
+    visibility: hidden
+}
+
+.showClass{
+     visibility: visible;
+}
+
+#mycounter{
+    font-size: 3em;
+    z-index: 200;
+    position:absolute;
+    color:red;
+    padding-bottom: 100px
+}
+
+#startbuttondiv{
+    width:200px;
+    margin: 0 auto;
+}
+
+  #start {
+  background: #e61010;
+  background-image: -webkit-linear-gradient(top, #e61010, #bf0404);
+  background-image: -moz-linear-gradient(top, #e61010, #bf0404);
+  background-image: -ms-linear-gradient(top, #e61010, #bf0404);
+  background-image: -o-linear-gradient(top, #e61010, #bf0404);
+  background-image: linear-gradient(to bottom, #e61010, #bf0404);
+  -webkit-border-radius: 23;
+  -moz-border-radius: 23;
+  border-radius: 23px;
+  text-shadow: 1px 1px 3px #cc262f;
+  -webkit-box-shadow: 10px 4px 3px #a8a8a8;
+  -moz-box-shadow: 10px 4px 3px #a8a8a8;
+  box-shadow: 10px 4px 3px #a8a8a8;
+  font-family: Georgia;
+  color: #f5f5f5;
+  font-size: 20px;
+  padding: 28px;
+  border: dotted #ff0000 5px;
+  text-decoration: none;
+}
+
+#start:hover {
+  background: #e83131;
+  background-image: -webkit-linear-gradient(top, #e83131, #f22424);
+  background-image: -moz-linear-gradient(top, #e83131, #f22424);
+  background-image: -ms-linear-gradient(top, #e83131, #f22424);
+  background-image: -o-linear-gradient(top, #e83131, #f22424);
+  background-image: linear-gradient(to bottom, #e83131, #f22424);
+  text-decoration: none;
+}
+
 #ming{
     float: left;
     margin-left: 30%;
