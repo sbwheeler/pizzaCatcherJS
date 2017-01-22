@@ -30,9 +30,7 @@ then connect to localhost:8080.
 
 You will need a pink sticker like the one located below. This is what you will be catching the pizza with!
 
-![alt text][logo]
-
-[logo]: ../images/examplePink.jpeg
+![alt text](https://github.com/sbwheeler/mingJS/blob/master/images/examplePink.jpeg)
 
 ## Running the tests
 
