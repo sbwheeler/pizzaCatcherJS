@@ -95,7 +95,11 @@ body {
 }
 
 #endgame {
+  border: solid black 3px;
   text-align: center;
   font-size: 200%;
   font-weight: bold;
+  width:50%;
+  margin: 0 auto;
+  background-color: #DF0E0E;
 }
