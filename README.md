@@ -18,15 +18,15 @@ Setup is easy, in the project directory run
 npm install
 ```
 
-Then, to start the server run
+then, to start the server run
 
 ```
 npm start
 ```
 
-and then connect to localhost:8080.
+and connect to localhost:8080.
 
-You will need a pink sticker like the one located below. This is what you will be catching the pizza with!
+You will need a pink sticker like the one located below (or a pink post-it note). This is what you will be catching the pizza with!
 
 ![alt text](https://github.com/sbwheeler/mingJS/blob/master/images/examplePink.jpeg)
 
