@@ -1,6 +1,6 @@
 # pizzaCatcherJS
 
-pizzaCatcherJS is a color detecting webcam game that allows people to interact with their computers and catch pizza thrown to them by our good friend Ming (it's an inside joke). It was built using Node, Express, jQuery and a motion/color detecting library called tracking.js. It was made as a project for a hacakthon at Fullstack Acadmey. The game is deployed and viewable at "".
+pizzaCatcherJS is a color detecting webcam game that allows people to interact with their computers and catch pizza thrown to them by our good friend Ming (it's an inside joke). It was built using Node, jQuery and a motion/color detecting library called tracking.js. It was made as a project for a hacakthon at Fullstack Acadmey. The game is deployed and viewable at http://pizzacatcherjs.herokuapp.com.
 
 ## Getting Started
 
